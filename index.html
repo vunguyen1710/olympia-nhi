@@ -67,9 +67,28 @@ const shuffle=a=>[...a].sort(()=>Math.random()-.5);
 function show(id){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active')}
 function startQuiz(mode){lastMode=mode;let base=qs;if(mode==='vi')base=qs.filter(x=>x.type==='vi');if(mode==='en')base=qs.filter(x=>x.type==='en');if(mode==='wrong'){let ids=JSON.parse(localStorage.getItem('olympiaWrong')||'[]');base=qs.filter(x=>ids.includes(x.id));if(!base.length){alert('Chưa có câu nào cần ôn lại. Hãy làm một lượt trước nhé!');return}}deck=shuffle(base);if(mode==='random10')deck=deck.slice(0,10);idx=score=correct=0;show('quiz');render()}
 function render(){let x=deck[idx];stopSpeech();document.getElementById('modeTitle').textContent=lastMode==='vi'?'Tiếng Việt':lastMode==='en'?'English':lastMode==='all'?'48 câu':lastMode==='wrong'?'Ôn lại':'Khởi động';document.getElementById('progressNum').textContent=`${idx+1}/${deck.length}`;document.getElementById('bar').style.width=`${idx/deck.length*100}%`;document.getElementById('score').textContent=score;document.getElementById('streak').textContent=correct;document.getElementById('cat').textContent=x.type==='vi'?'🇻🇳 Tiếng Việt':'🇬🇧 English';document.getElementById('qno').textContent=`CÂU ${idx+1}`;document.getElementById('question').textContent=x.q;document.getElementById('answer').textContent=x.a;document.getElementById('answerBox').classList.remove('show');document.getElementById('judge').classList.remove('show');document.getElementById('reveal').style.display='block';setTimeout(speakQuestion,250)}
-function stopSpeech(){if('speechSynthesis' in window)window.speechSynthesis.cancel()}
+let questionAudio=null;
+function stopSpeech(){
+  if(questionAudio){questionAudio.pause();questionAudio.currentTime=0;questionAudio=null;}
+  if('speechSynthesis' in window)window.speechSynthesis.cancel();
+}
 function pickVoice(lang){let voices=speechSynthesis.getVoices();let prefix=lang==='vi'?'vi':'en';return voices.find(v=>v.lang.toLowerCase().startsWith(prefix))||null}
-function speakQuestion(){if(!('speechSynthesis' in window))return;stopSpeech();let x=deck[idx];if(!x)return;let u=new SpeechSynthesisUtterance(x.q);u.lang=x.type==='vi'?'vi-VN':'en-US';u.rate=x.type==='vi'?0.9:0.85;u.pitch=1.08;let v=pickVoice(x.type);if(v)u.voice=v;speechSynthesis.speak(u)}
+function speakQuestion(){
+  stopSpeech();
+  let x=deck[idx];
+  if(!x)return;
+  if(x.type==='vi'){
+    const n=String(x.id+1).padStart(2,'0');
+    questionAudio=new Audio(`audio/vi/cau${n}.mp3`);
+    questionAudio.preload='auto';
+    questionAudio.play().catch(err=>{console.log('Trình duyệt chặn tự phát âm thanh:',err);});
+    return;
+  }
+  if(!('speechSynthesis' in window))return;
+  let u=new SpeechSynthesisUtterance(x.q);
+  u.lang='en-US';u.rate=0.85;u.pitch=1.08;
+  let v=pickVoice('en');if(v)u.voice=v;speechSynthesis.speak(u);
+}
 if('speechSynthesis' in window)speechSynthesis.onvoiceschanged=()=>{};
 function revealAnswer(){document.getElementById('answerBox').classList.add('show');document.getElementById('judge').classList.add('show');document.getElementById('reveal').style.display='none'}
 function judge(ok){let x=deck[idx],wrong=JSON.parse(localStorage.getItem('olympiaWrong')||'[]');if(ok){score+=10;correct++;wrong=wrong.filter(id=>id!==x.id);burst()}else if(!wrong.includes(x.id))wrong.push(x.id);localStorage.setItem('olympiaWrong',JSON.stringify(wrong));idx++;if(idx>=deck.length)finish();else render()}
