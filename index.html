@@ -13,7 +13,7 @@ button{font:inherit}.app{max-width:760px;margin:auto;min-height:100vh;padding:16
 </style></head>
 <body><div class="app">
 <section id="start" class="screen active">
- <div class="top"><div class="brand">🏆 OLYMPIA NHÍ</div><div class="pill">Tuần 4 • Quý II</div></div>
+ <div class="top"><div class="brand">🏆 OLYMPIA NHÍ</div><div class="pill">Quý II • Đợt 2</div></div>
  <div class="hero"><div class="trophy">🏆✨</div><h1>Chinh phục<br>đỉnh Olympia!</h1><p class="lead">Luyện phản xạ, ghi điểm và phá kỷ lục của chính mình. Sẵn sàng chưa nào?</p>
  <div class="modes">
   <button class="mode primary" onclick="startQuiz('random10')"><span>⚡</span>Khởi động 10 câu<small>10 câu ngẫu nhiên</small></button>
@@ -21,7 +21,7 @@ button{font:inherit}.app{max-width:760px;margin:auto;min-height:100vh;padding:16
   <button class="mode" onclick="startQuiz('en')"><span>🇬🇧</span>English<small>20 questions</small></button>
   <button class="mode" onclick="startQuiz('wrong')"><span>🎯</span>Ôn câu chưa đúng<small id="wrongCount">Chưa có câu nào</small></button>
   <button class="mode wide" onclick="startQuiz('all')"><span>🌟</span>Thử thách toàn bộ 48 câu<small>Trộn ngẫu nhiên toàn bộ bộ đề</small></button>
- </div></div><div class="footerNote">Học vui mỗi ngày • Điểm cao hơn chính mình 🌈</div>
+ </div></div><div class="footerNote">Bộ đề Quý II – Đợt 2 • Giữ nguyên đáp án theo tài liệu 🌈</div>
 </section>
 <section id="quiz" class="screen">
  <div class="quizTop"><button class="back" onclick="goHome()">‹</button><div class="progressWrap"><div class="progressText"><span id="modeTitle">Khởi động</span><span id="progressNum">1/10</span></div><div class="bar"><i id="bar"></i></div></div></div>
@@ -32,40 +32,251 @@ button{font:inherit}.app{max-width:760px;margin:auto;min-height:100vh;padding:16
 </div><div class="confetti" id="confetti"></div>
 <script>
 const qs=[
-['vi','Napoleon là vua nước nào?','Nước Pháp'],
-['vi','Có bao nhiêu chữ C trong từ “Con cóc”?','3'],
-['vi','Hành tinh nào có ngọn núi cao nhất hệ Mặt Trời?','Sao Hỏa'],
-['vi','Nước nào phát minh ra mì gói?','Nhật Bản'],
-['vi','Hãy kể tên ba loại bánh có hình chóp?','Bánh ít, bánh giò, bánh ú'],
-['vi','Răng vĩnh viễn có mấy cái?','32 cái'],
-['vi','Quốc gia nào có diện tích lớn nhất thế giới?','Nga'],
-['vi','Châu Á, Châu Phi, Châu Âu, Châu Mỹ, Châu chấu — châu nào bay được?','Châu chấu'],
-['vi','Con bò có răng hay không?','Có'],
-['vi','Thôi nôi là sinh nhật lần thứ mấy?','Thứ nhất'],
-['vi','Trong bài hát “Không dám đâu” có nhắc đến môn thể thao nào?','Đá cầu'],
-['vi','Doraemon có mấy cọng râu?','6 cọng râu'],
-['vi','Vì sao em bé trong bài hát “Không dám đâu” không tham gia trò chơi?','Vì em bé bận học bài'],
-['vi','Cây gì có nhiều năng lượng nhất?','Cây cột điện'],
-['vi','Con gì đầu chuột mình chim?','Con dơi'],
-['vi','Dưới nốt Sol, trên nốt Mi là nốt gì?','Nốt Fa'],
-['vi','Tấm và Cám, ai là chị?','Tấm'],
-['vi','Đàn piano tiêu chuẩn có bao nhiêu phím?','88 phím'],
-['vi','Con ve sầu kêu như thế nào?','Ve ve'],
-['vi','Alibaba và Aladin có gì giống nhau?','Đều là nhân vật cổ tích'],
-['vi','Con ếch uống nước bằng gì?','Da'],
-['vi','Con tuần lộc dẫn đầu xe của ông già Noel có đặc điểm gì khác những con còn lại?','Mũi phát sáng'],
-['vi','Cá sấu, cá mập, cá heo — con nào có chân?','Cá sấu'],
-['vi','Cây nào có tên của một loài chim?','Cây Sáo'],
-['vi','Con ốc, con kênh, con ếch, con công — con nào có 4 chân?','Con ếch'],
-['vi','Người khám răng cho con gọi là nha sĩ, vậy người khám răng cho chó gọi là gì?','Bác sĩ thú y'],
-['vi','Trong bài hát “Bố là tất cả”, người bố được ví là thuyền gì?','Thuyền nan, phi thuyền'],
-['vi','Đồng hồ nào không có kim giờ, kim phút, kim giây?','Đồng hồ cát'],
-['en','What do you use to write on a blackboard?','Chalk'],['en','What do bees make?','Honey'],['en','How many days are in a year?','365 days'],['en','Which country is home to the kangaroo?','Australia'],['en','What food do pandas eat?','Bamboo'],['en','How many pairs of wings do bees have?','Two'],['en','Who only works one day a year?','Santa Claus'],['en','How many days are in a week?','Seven'],['en','How many seasons are in a year?','Four'],['en','List a fruit that starts with A.','Apple'],['en','Which animal starts with letter D?','Dog'],['en','Which body part starts with E?','Elbow'],['en','I can swim and dive, I say quack. What am I?','I’m a duck'],['en','Please hands up!','Giơ tay lên 🙌'],['en','Please nod your head!','Gật đầu 🙂'],['en','List 2 things that are cold.','Ice cream / snow / winter / igloo'],['en','List 2 things that are hot.','Sun / fire / candle / heater'],['en','What letter does the word “Santa” start with?','S'],['en','What festival in winter do kids love?','Christmas'],['en','What number comes after 12?','13']
+ [
+  "vi",
+  "Rắn mối đẻ trứng hay đẻ con?",
+  "Đẻ con"
+ ],
+ [
+  "vi",
+  "Tôi có 4 cái chân, 1 cái lưng, nhưng không có cơ thể. Tôi là ai?",
+  "Cái ghế"
+ ],
+ [
+  "vi",
+  "Người lái máy bay gọi là phi công, vậy người lái tàu hỏa được gọi là gì?",
+  "Tài xế lái tàu"
+ ],
+ [
+  "vi",
+  "Napoleon là vua nước nào?",
+  "Nước Pháp"
+ ],
+ [
+  "vi",
+  "Chuồn chuồn đẻ trứng hay đẻ con?",
+  "Đẻ trứng"
+ ],
+ [
+  "vi",
+  "Con voi dùng vòi để hút nước hay thở?",
+  "Cả hai"
+ ],
+ [
+  "vi",
+  "Truyện Ba chú heo con, ngoài con heo thì còn con vật nào?",
+  "Con sói"
+ ],
+ [
+  "vi",
+  "Anh em song sinh là có mấy người?",
+  "2"
+ ],
+ [
+  "vi",
+  "Bài hát “Cháu thương chú bộ đội” của tác giả nào?",
+  "Hoàng Văn Yến"
+ ],
+ [
+  "vi",
+  "Gà con khi lớn lên sẽ trở thành gà bố hay gà mẹ?",
+  "Con trống thành gà bố, con mái thành gà mẹ"
+ ],
+ [
+  "vi",
+  "Có mấy hành tinh trong hệ Mặt Trời?",
+  "8 hành tinh"
+ ],
+ [
+  "vi",
+  "Ngày 22/12 là ngày gì?",
+  "Ngày thành lập Quân đội nhân dân Việt Nam"
+ ],
+ [
+  "vi",
+  "Con bò, con chó, con heo, con nào là động vật nhai lại?",
+  "Con bò"
+ ],
+ [
+  "vi",
+  "Chơi oẳn tù tì, nếu mình ra kéo thì người ta cần ra cái gì để thua?",
+  "Cái bao"
+ ],
+ [
+  "vi",
+  "Cậu bé chăn cừu trong truyện không tốt ở chỗ nào?",
+  "Nói dối"
+ ],
+ [
+  "vi",
+  "Ngày 22/12 là ngày gì?",
+  "Ngày thành lập Quân đội nhân dân Việt Nam"
+ ],
+ [
+  "vi",
+  "Cầu vồng xuất hiện khi thời tiết như thế nào?",
+  "Sau mưa mùa hè"
+ ],
+ [
+  "vi",
+  "Bộ phận nào không thuộc cơ quan tiêu hóa: dạ dày, ruột non, não?",
+  "Não"
+ ],
+ [
+  "vi",
+  "Từ nào dùng để nói về một ngọn núi: hùng vĩ, hùng cường, hùn hạp?",
+  "Hùng vĩ"
+ ],
+ [
+  "vi",
+  "Nguồn năng lượng nào là năng lượng thân thiện với môi trường?",
+  "Năng lượng từ Mặt Trời"
+ ],
+ [
+  "vi",
+  "Con vật nào luôn mang theo nhà của mình?",
+  "Ốc sên"
+ ],
+ [
+  "vi",
+  "Phổi có chức năng gì?",
+  "Trao đổi khí"
+ ],
+ [
+  "vi",
+  "Con vật nào có bộ lông bông xù, sống trong rừng và yêu thích ăn mật ong?",
+  "Con gấu"
+ ],
+ [
+  "vi",
+  "Bài hát “Trường chúng cháu là trường mầm non” do ai sáng tác?",
+  "Phạm Tuyên"
+ ],
+ [
+  "vi",
+  "Con gì nửa chuột, nửa chim, ngày thì đi ngủ, tối tìm mồi bay?",
+  "Con dơi"
+ ],
+ [
+  "vi",
+  "Phương tiện nào chạy bằng sức gió?",
+  "Thuyền buồm"
+ ],
+ [
+  "vi",
+  "Ngày sinh nhật Bác Hồ là ngày nào?",
+  "Ngày 19/5"
+ ],
+ [
+  "vi",
+  "Ngày 20/11 là ngày gì?",
+  "Ngày hội của các cô giáo"
+ ],
+ [
+  "en",
+  "What colors make pink?",
+  "Red and white"
+ ],
+ [
+  "en",
+  "What colors make purple?",
+  "Red and blue"
+ ],
+ [
+  "en",
+  "What colors make yellow?",
+  "Green and red"
+ ],
+ [
+  "en",
+  "What colors make gray?",
+  "White and black"
+ ],
+ [
+  "en",
+  "What colors make orange?",
+  "Yellow and red"
+ ],
+ [
+  "en",
+  "What do you use to brush your teeth?",
+  "Toothbrush"
+ ],
+ [
+  "en",
+  "How many toes do you have on 2 feet?",
+  "10 toes"
+ ],
+ [
+  "en",
+  "What is the first thing you do in the morning?",
+  "Wake up"
+ ],
+ [
+  "en",
+  "What’s the name of your school?",
+  "Sunkids preschool"
+ ],
+ [
+  "en",
+  "The elephant begins with letter …?",
+  "Letter E"
+ ],
+ [
+  "en",
+  "Which number is missing? 9, 10, …, 12, 13.",
+  "Number 11"
+ ],
+ [
+  "en",
+  "What animal makes the sound “Ribit, ribit, ribit”?",
+  "Frog"
+ ],
+ [
+  "en",
+  "Five plus five equals …?",
+  "Ten"
+ ],
+ [
+  "en",
+  "Which color of traffic light means you can go?",
+  "Green light"
+ ],
+ [
+  "en",
+  "What festival has Chung Cake?",
+  "Tet holiday"
+ ],
+ [
+  "en",
+  "Seven minus three equals …?",
+  "Four"
+ ],
+ [
+  "en",
+  "Where are you from?",
+  "I’m from Vietnam"
+ ],
+ [
+  "en",
+  "The elephant begins with letter …?",
+  "Letter K"
+ ],
+ [
+  "en",
+  "Which number is missing? 9, 10, …, 12, 13.",
+  "Number 11"
+ ],
+ [
+  "en",
+  "What animal makes the sound “Ribit, ribit, ribit”?",
+  "Frog"
+ ]
 ].map((x,i)=>({id:i,type:x[0],q:x[1],a:x[2]}));
 let deck=[],idx=0,score=0,correct=0,lastMode='random10';
 const shuffle=a=>[...a].sort(()=>Math.random()-.5);
 function show(id){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active')}
-function startQuiz(mode){lastMode=mode;let base=qs;if(mode==='vi')base=qs.filter(x=>x.type==='vi');if(mode==='en')base=qs.filter(x=>x.type==='en');if(mode==='wrong'){let ids=JSON.parse(localStorage.getItem('olympiaWrong')||'[]');base=qs.filter(x=>ids.includes(x.id));if(!base.length){alert('Chưa có câu nào cần ôn lại. Hãy làm một lượt trước nhé!');return}}deck=shuffle(base);if(mode==='random10')deck=deck.slice(0,10);idx=score=correct=0;show('quiz');render()}
+function startQuiz(mode){lastMode=mode;let base=qs;if(mode==='vi')base=qs.filter(x=>x.type==='vi');if(mode==='en')base=qs.filter(x=>x.type==='en');if(mode==='wrong'){let ids=JSON.parse(localStorage.getItem('olympiaWrongQuy2Dot2')||'[]');base=qs.filter(x=>ids.includes(x.id));if(!base.length){alert('Chưa có câu nào cần ôn lại. Hãy làm một lượt trước nhé!');return}}deck=shuffle(base);if(mode==='random10')deck=deck.slice(0,10);idx=score=correct=0;show('quiz');render()}
 function render(){let x=deck[idx];stopSpeech();document.getElementById('modeTitle').textContent=lastMode==='vi'?'Tiếng Việt':lastMode==='en'?'English':lastMode==='all'?'48 câu':lastMode==='wrong'?'Ôn lại':'Khởi động';document.getElementById('progressNum').textContent=`${idx+1}/${deck.length}`;document.getElementById('bar').style.width=`${idx/deck.length*100}%`;document.getElementById('score').textContent=score;document.getElementById('streak').textContent=correct;document.getElementById('cat').textContent=x.type==='vi'?'🇻🇳 Tiếng Việt':'🇬🇧 English';document.getElementById('qno').textContent=`CÂU ${idx+1}`;document.getElementById('question').textContent=x.q;document.getElementById('answer').textContent=x.a;document.getElementById('answerBox').classList.remove('show');document.getElementById('judge').classList.remove('show');document.getElementById('reveal').style.display='block';setTimeout(speakQuestion,250)}
 let currentAudio=null;
 function stopSpeech(){
@@ -78,27 +289,18 @@ function speakQuestion(){
   let x=deck[idx];
   if(!x)return;
 
-  // 28 câu tiếng Việt có id gốc 0..27. Audio luôn đi theo câu gốc,
-  // KHÔNG đi theo vị trí câu sau khi tráo.
-  if(x.type==='vi'){
-    const originalNo=x.id+1;
-    const file='audio/vi/cau'+String(originalNo).padStart(2,'0')+'.mp3';
-    currentAudio=new Audio(file);
-    currentAudio.play().catch(err=>console.log('Không phát được audio:',file,err));
-    return;
-  }
-
+  // Bộ đề mới: không dùng 28 MP3 của bộ cũ vì sẽ đọc sai câu.
   // Câu tiếng Anh tạm dùng giọng đọc của trình duyệt.
   if(!('speechSynthesis' in window))return;
   let u=new SpeechSynthesisUtterance(x.q);
-  u.lang='en-US';u.rate=0.85;u.pitch=1.08;
-  let v=pickVoice('en');if(v)u.voice=v;
+  u.lang=x.type==='vi'?'vi-VN':'en-US';u.rate=0.85;u.pitch=1.08;
+  let v=pickVoice(x.type);if(v)u.voice=v;
   speechSynthesis.speak(u);
 }
 if('speechSynthesis' in window)speechSynthesis.onvoiceschanged=()=>{};
 function revealAnswer(){document.getElementById('answerBox').classList.add('show');document.getElementById('judge').classList.add('show');document.getElementById('reveal').style.display='none'}
-function judge(ok){let x=deck[idx],wrong=JSON.parse(localStorage.getItem('olympiaWrong')||'[]');if(ok){score+=10;correct++;wrong=wrong.filter(id=>id!==x.id);burst()}else if(!wrong.includes(x.id))wrong.push(x.id);localStorage.setItem('olympiaWrong',JSON.stringify(wrong));idx++;if(idx>=deck.length)finish();else render()}
+function judge(ok){let x=deck[idx],wrong=JSON.parse(localStorage.getItem('olympiaWrongQuy2Dot2')||'[]');if(ok){score+=10;correct++;wrong=wrong.filter(id=>id!==x.id);burst()}else if(!wrong.includes(x.id))wrong.push(x.id);localStorage.setItem('olympiaWrongQuy2Dot2',JSON.stringify(wrong));idx++;if(idx>=deck.length)finish();else render()}
 function finish(){stopSpeech();document.getElementById('bar').style.width='100%';show('result');let pct=correct/deck.length;document.getElementById('finalScore').textContent=score;document.getElementById('medal').textContent=pct>=.9?'🏆':pct>=.7?'🥇':pct>=.5?'🥈':'🌱';document.getElementById('resultTitle').textContent=pct>=.9?'Nhà vô địch Olympia!':pct>=.7?'Tuyệt vời!':pct>=.5?'Rất cố gắng!':'Cùng luyện thêm nhé!';document.getElementById('resultText').textContent=`Con trả lời đúng ${correct}/${deck.length} câu. Mỗi lần luyện là một lần tiến bộ!`;if(pct>=.7)burst(35);updateWrong()}
 function burst(n=16){let c=document.getElementById('confetti'),icons=['⭐','✨','🎉','🔵','🟡'];for(let i=0;i<n;i++){let b=document.createElement('b');b.textContent=icons[Math.floor(Math.random()*icons.length)];b.style.left=Math.random()*100+'%';b.style.animationDelay=Math.random()*.3+'s';c.appendChild(b);setTimeout(()=>b.remove(),1900)}}
-function restart(){startQuiz(lastMode)}function goHome(){stopSpeech();show('start');updateWrong()}function updateWrong(){let n=JSON.parse(localStorage.getItem('olympiaWrong')||'[]').length;document.getElementById('wrongCount').textContent=n?`${n} câu cần luyện lại`:'Chưa có câu nào'}updateWrong();
+function restart(){startQuiz(lastMode)}function goHome(){stopSpeech();show('start');updateWrong()}function updateWrong(){let n=JSON.parse(localStorage.getItem('olympiaWrongQuy2Dot2')||'[]').length;document.getElementById('wrongCount').textContent=n?`${n} câu cần luyện lại`:'Chưa có câu nào'}updateWrong();
 </script></body></html>
