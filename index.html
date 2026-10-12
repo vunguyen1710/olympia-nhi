@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#102a68"><title>Olympia Nhí • Tuần 4 Quý II</title>
+<meta name="theme-color" content="#102a68"><title>Olympia Nhí • Bộ đề Quý II Đợt 2</title>
 <style>
 :root{--navy:#102a68;--blue:#1d5fd1;--sky:#eaf5ff;--yellow:#ffd84d;--white:#fff;--green:#19a974;--red:#ef5350;--ink:#15213a;--muted:#6c7891}
 *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:linear-gradient(155deg,#0c2259,#174aa8 45%,#5fb9ff);color:var(--ink);min-height:100vh}
@@ -13,7 +13,7 @@ button{font:inherit}.app{max-width:760px;margin:auto;min-height:100vh;padding:16
 </style></head>
 <body><div class="app">
 <section id="start" class="screen active">
- <div class="top"><div class="brand">🏆 OLYMPIA NHÍ</div><div class="pill">Quý II • Đợt 2</div></div>
+ <div class="top"><div class="brand">🏆 OLYMPIA NHÍ</div><div class="pill">BỘ ĐỀ MỚI • QUÝ II ĐỢT 2</div></div>
  <div class="hero"><div class="trophy">🏆✨</div><h1>Chinh phục<br>đỉnh Olympia!</h1><p class="lead">Luyện phản xạ, ghi điểm và phá kỷ lục của chính mình. Sẵn sàng chưa nào?</p>
  <div class="modes">
   <button class="mode primary" onclick="startQuiz('random10')"><span>⚡</span>Khởi động 10 câu<small>10 câu ngẫu nhiên</small></button>
@@ -21,7 +21,7 @@ button{font:inherit}.app{max-width:760px;margin:auto;min-height:100vh;padding:16
   <button class="mode" onclick="startQuiz('en')"><span>🇬🇧</span>English<small>20 questions</small></button>
   <button class="mode" onclick="startQuiz('wrong')"><span>🎯</span>Ôn câu chưa đúng<small id="wrongCount">Chưa có câu nào</small></button>
   <button class="mode wide" onclick="startQuiz('all')"><span>🌟</span>Thử thách toàn bộ 48 câu<small>Trộn ngẫu nhiên toàn bộ bộ đề</small></button>
- </div></div><div class="footerNote">Bộ đề Quý II – Đợt 2 • Giữ nguyên đáp án theo tài liệu 🌈</div>
+ </div></div><div class="footerNote">BẢN MỚI 12/10/2026 • 28 câu Việt + 20 câu Anh 🌈</div>
 </section>
 <section id="quiz" class="screen">
  <div class="quizTop"><button class="back" onclick="goHome()">‹</button><div class="progressWrap"><div class="progressText"><span id="modeTitle">Khởi động</span><span id="progressNum">1/10</span></div><div class="bar"><i id="bar"></i></div></div></div>
@@ -31,6 +31,7 @@ button{font:inherit}.app{max-width:760px;margin:auto;min-height:100vh;padding:16
 <section id="result" class="screen"><div class="top"><div class="brand">🏆 OLYMPIA NHÍ</div></div><div class="card result"><div class="medal" id="medal">🏅</div><h2 id="resultTitle">Xuất sắc!</h2><div class="bigscore"><span id="finalScore">0</span> điểm</div><p id="resultText"></p><div class="resultBtns"><button class="again" onclick="restart()">🔁 Chơi lại</button><button class="home" onclick="goHome()">🏠 Về màn hình chính</button></div></div></section>
 </div><div class="confetti" id="confetti"></div>
 <script>
+// DATASET: QUY-II-DOT-2-20261012 — không dùng bộ đề tuần 4
 const qs=[
  [
   "vi",
